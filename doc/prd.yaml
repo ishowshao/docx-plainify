@@ -92,7 +92,6 @@
     说明: "Python 的 `python-docx` 库"
     推荐:
       - "Python: python-docx"
-      - "Java: Apache POI"
   YAML生成库:
     说明: "例如：Python 的 `PyYAML` 或 `ruamel.yaml`，Java 的 `SnakeYAML` 等。"
     推荐:
