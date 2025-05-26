@@ -93,13 +93,12 @@
     推荐:
       - "Python: python-docx"
   YAML生成库:
-    说明: "例如：Python 的 `PyYAML` 或 `ruamel.yaml`，Java 的 `SnakeYAML` 等。"
+    说明: "例如：Python 的 `PyYAML`"
     推荐:
       - "Python: PyYAML (或 ruamel.yaml 以更好地支持注释和顺序)"
-      - "Java: SnakeYAML"
   LLM_Vision_API集成:
     要点:
-      - "使用相应服务提供商的 SDK (Software Development Kit) 或直接进行 HTTP API 调用。"
+      - "使用langchain azure openai"
       - "妥善管理 API 密钥和认证。"
   命令行接口_CLI:
     说明: "提供清晰的命令行参数，以便用户操作。"
