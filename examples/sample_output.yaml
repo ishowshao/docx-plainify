@@ -1,0 +1,66 @@
+- type: heading
+  text: "项目计划文档"
+  level: 1
+
+- type: paragraph
+  text: "这是一个示例文档，展示 docx-plainify 工具的转换效果。"
+
+- type: heading
+  text: "项目概述"
+  level: 2
+
+- type: paragraph
+  text: "本项目旨在开发一个高效的文档转换工具，将 Word 文档转换为结构化的 YAML 格式。"
+
+- type: list
+  items:
+    - text: "支持多种文档元素"
+    - text: "保持原始结构"
+      children:
+        - text: "段落层次"
+        - text: "列表嵌套"
+        - text: "表格结构"
+    - text: "AI 友好的输出格式"
+
+- type: heading
+  text: "团队成员"
+  level: 2
+
+- type: table
+  rows:
+    - 姓名: "张三"
+      职责: "产品经理"
+      备注: "负责需求分析和产品设计"
+    - 姓名: "李四"
+      职责: "开发工程师"
+      备注: "负责核心功能开发"
+    - 姓名: "王五"
+      职责: "测试工程师"
+      备注: "负责质量保证"
+
+- type: heading
+  text: "技术栈"
+  level: 2
+
+- type: list
+  items:
+    - text: "后端技术"
+      children:
+        - text: "Python 3.8+"
+        - text: "python-docx 库"
+        - text: "PyYAML 库"
+    - text: "AI 集成"
+      children:
+        - text: "OpenAI GPT-4o"
+        - text: "Langchain 框架"
+    - text: "工具链"
+      children:
+        - text: "Click 命令行框架"
+        - text: "Pillow 图像处理"
+
+- type: image
+  name: "architecture_diagram.png"
+  description: "系统架构图，显示了从 DOCX 输入到 YAML 输出的完整处理流程，包括文本解析、结构识别、图像处理和格式转换等主要模块。"
+
+- type: paragraph
+  text: "以上示例展示了 docx-plainify 工具能够处理的各种文档元素，包括标题、段落、列表、表格和图像等。" 

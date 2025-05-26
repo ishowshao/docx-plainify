@@ -1,0 +1,51 @@
+- type: paragraph
+  text: 项目计划文档
+- type: paragraph
+  text: 这是一个示例文档，用于测试 docx-plainify 工具的转换功能。
+- type: heading
+  text: 项目概述
+  level: 1
+- type: paragraph
+  text: 本项目旨在开发一个高效的文档转换工具，将 Word 文档转换为结构化的 YAML 格式。
+- type: heading
+  text: 项目特点：
+  level: 2
+- type: list
+  items:
+  - text: 支持多种文档元素
+  - text: 保持原始结构
+  - text: AI 友好的输出格式
+- type: heading
+  text: 团队成员
+  level: 2
+- type: table
+  rows:
+  - 姓名: 张三
+    职责: 产品经理
+    备注: 负责需求分析和产品设计
+  - 姓名: 李四
+    职责: 开发工程师
+    备注: 负责核心功能开发
+  - 姓名: 王五
+    职责: 测试工程师
+    备注: 负责质量保证
+- type: heading
+  text: 技术栈
+  level: 2
+- type: heading
+  text: 后端技术：
+  level: 3
+- type: list
+  items:
+  - text: Python 3.8+
+  - text: python-docx 库
+  - text: PyYAML 库
+- type: heading
+  text: AI 集成：
+  level: 3
+- type: list
+  items:
+  - text: OpenAI GPT-4o
+  - text: Langchain 框架
+- type: paragraph
+  text: 以上示例展示了 docx-plainify 工具能够处理的各种文档元素。
