@@ -84,7 +84,7 @@
       说明: "将生成的文本描述作为特定类型的元素插入到 YAML 输出中，位置对应其在原文档中的位置。"
       示例:
         - type: image
-          name: "sales_chart"
+          name: "sales_chart" # 可选，解析 Alt Text
           description: "一张柱状图，显示一月至六月的销售额稳步增长，六月销售额最高。" # 由 LLM 生成
 
 技术选型与实现要点:
