@@ -32,10 +32,10 @@ class DocxToYamlConverter:
         
         Args:
             describe_images: Whether to generate descriptions for images using LLM
-            api_key: OpenAI API key for image description (if describe_images is True)
+            api_key: Deprecated parameter, Azure OpenAI uses environment variables
         """
         self.describe_images = describe_images
-        self.image_processor = ImageProcessor(api_key) if describe_images else None
+        self.image_processor = ImageProcessor() if describe_images else None
         self.logger = logging.getLogger(__name__)
         
     def convert_file(self, input_path: str, output_path: str) -> None:

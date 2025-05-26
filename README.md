@@ -56,14 +56,15 @@ docx-plainify document.docx -v
 
 ### 图像描述功能
 
-要启用图像描述功能，您需要 OpenAI API 密钥：
+要启用图像描述功能，您需要配置 Azure OpenAI 环境变量：
 
 ```bash
-# 使用命令行参数
-docx-plainify document.docx --describe-images --api-key your_api_key
+# 配置 Azure OpenAI 环境变量
+export AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
+export AZURE_OPENAI_DEPLOYMENT_NAME=your-deployment-name
+export AZURE_OPENAI_API_VERSION=2024-02-15-preview
 
-# 使用环境变量
-export OPENAI_API_KEY=your_api_key
+# 启用图像描述
 docx-plainify document.docx --describe-images
 ```
 
@@ -74,8 +75,8 @@ Usage: docx-plainify [OPTIONS] INPUT_FILE
 
 Options:
   -o, --output PATH       输出 YAML 文件路径
-  --describe-images       使用 LLM 生成图像描述（需要 OpenAI API 密钥）
-  --api-key TEXT          OpenAI API 密钥
+  --describe-images       使用 LLM 生成图像描述（需要 Azure OpenAI 配置）
+  --api-key TEXT          已弃用：请使用 Azure OpenAI 环境变量
   -v, --verbose           启用详细日志
   --version               显示版本信息
   --help                  显示帮助信息
@@ -132,7 +133,7 @@ Options:
 
 - **DOCX 解析**: 使用 `python-docx` 库
 - **YAML 生成**: 使用 `PyYAML` 库
-- **图像描述**: 使用 `langchain` 和 OpenAI GPT-4o 模型
+- **图像描述**: 使用 `langchain` 和 Azure OpenAI 模型
 - **命令行接口**: 使用 `click` 库
 
 ## 项目结构
@@ -154,7 +155,9 @@ docx-plainify/
 
 ## 环境变量
 
-- `OPENAI_API_KEY`: OpenAI API 密钥（用于图像描述功能）
+- `AZURE_OPENAI_ENDPOINT`: Azure OpenAI 服务端点
+- `AZURE_OPENAI_DEPLOYMENT_NAME`: Azure OpenAI 部署名称
+- `AZURE_OPENAI_API_VERSION`: Azure OpenAI API 版本
 
 ## 错误处理
 

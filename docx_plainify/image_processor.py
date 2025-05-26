@@ -5,10 +5,11 @@ Image processing module for generating semantic descriptions using LLM.
 import logging
 import base64
 import io
+import os
 from typing import Optional
 
 from PIL import Image
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain.schema import HumanMessage
 
 
@@ -22,25 +23,39 @@ class ImageProcessor:
         Initialize the image processor.
         
         Args:
-            api_key: OpenAI API key for LLM calls
+            api_key: Deprecated parameter, Azure OpenAI uses environment variables
         """
-        self.api_key = api_key
         self.logger = logging.getLogger(__name__)
         
-        if api_key:
+        # Check for required Azure OpenAI environment variables
+        azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
+        azure_deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT_NAME")
+        azure_api_version = os.environ.get("AZURE_OPENAI_API_VERSION")
+        
+        if azure_endpoint and azure_deployment and azure_api_version:
             try:
-                self.llm = ChatOpenAI(
-                    model="gpt-4o",
-                    api_key=api_key,
+                self.llm = AzureChatOpenAI(
+                    azure_endpoint=azure_endpoint,
+                    azure_deployment=azure_deployment,
+                    openai_api_version=azure_api_version,
                     max_tokens=500,
                     temperature=0.1
                 )
+                self.logger.info("Successfully initialized Azure OpenAI client")
             except Exception as e:
-                self.logger.error(f"Failed to initialize OpenAI client: {str(e)}")
+                self.logger.error(f"Failed to initialize Azure OpenAI client: {str(e)}")
                 self.llm = None
         else:
             self.llm = None
-            self.logger.warning("No API key provided. Image descriptions will not be generated.")
+            missing_vars = []
+            if not azure_endpoint:
+                missing_vars.append("AZURE_OPENAI_ENDPOINT")
+            if not azure_deployment:
+                missing_vars.append("AZURE_OPENAI_DEPLOYMENT_NAME")
+            if not azure_api_version:
+                missing_vars.append("AZURE_OPENAI_API_VERSION")
+            
+            self.logger.warning(f"Missing Azure OpenAI environment variables: {', '.join(missing_vars)}. Image descriptions will not be generated.")
     
     def describe_image(self, image_data: bytes) -> str:
         """
@@ -53,7 +68,7 @@ class ImageProcessor:
             Text description of the image
         """
         if not self.llm:
-            return "Image description not available (no API key provided)"
+            return "Image description not available (Azure OpenAI not configured)"
         
         try:
             # Convert image data to base64
